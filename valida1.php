@@ -3,8 +3,8 @@ session_start();
 
 include_once("conexao1.php");
 if((isset($_POST['email'])) && (isset($_POST['senha']))) {	
-	$usuario =mysql_real_escape_string($conn, $_POST['email']);
-	$senha =mysql_real_escape_string($conn, $_POST['senha']);
+	$usuario =mysqli_real_escape_string($conn, $_POST['email']);
+	$senha =mysqli_real_escape_string($conn, $_POST['senha']);
     
 
     $sql = "SELECT * FROM clientes WHERE email= '$usuario' && senha = '$senha' LIMIT 1";
@@ -22,7 +22,7 @@ if(empty($resultado)){
 	header("Location: entrar1.html");
 }
 }else{
-	$_SESSION['loginErro'] ="Usuário ou senha Inválido";
+	$_SESSION['loginCerto'] ="Usuário ou senha Valido";
 	header("Location: entrar1.html");
 }
 
