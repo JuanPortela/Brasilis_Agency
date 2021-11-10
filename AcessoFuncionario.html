@@ -43,28 +43,59 @@
 	  <a class= "text-white" href="Sul.html" >Sul</a>
     <a class="text-success nav-item nav-link" href="entrar1.html">Login</a>
     <a class="text-white nav-item nav-link" href="sign.html">Cadastro</a>
-    <style>
-        h1 {text-align: center;}
-        p {text-align: center;}
-        div {text-align: center;}
-        img {
-       display: block;
-       margin-left: auto;
-       margin-right: auto;
-                          }
-        </style>
-
+    
     </div>
   </div>
 </nav>
-<body>
-  <br>
-  <br>
-    <h1>Pagamento Finalizado</h1>
-    <p>Aguarde novas informações no email </p>
-    <div>Obrigado pela compra</div>
-    <br>
-    <br>
-    <img src="Imagens/certo.png"  style="width:10%;">
-    <div> Volte a pagina incial </div>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+       
+    </div>
+  </div>
+    </br>
+    <div class="row">
+       
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'Banco.php';
+                $pdo = Banco::conectar();
+                $sql = 'SELECT * FROM tb_alunos ORDER BY id DESC';
+
+                foreach($pdo->query($sql)as $row)
+                {
+                    echo '<tr>';
+              echo '<th scope="row">'. $row['id'] . '</th>';
+                    echo '<td>'. $row['nome'] . '</td>';
+                    echo '<td>'. $row['endereco'] . '</td>';
+                    echo '<td>'. $row['fone'] . '</td>';
+                    echo '<td>'. $row['email'] . '</td>';
+                    echo '<td>'. $row['sexo'] . '</td>';
+                    echo '<td width=350>';
+                    echo '<a class="btn btn-primary" href="read.php?id='.$row['id'].'">Info</a>';
+                    echo ' ';
+                    echo '</tr>';
+                }
+                Banco::desconectar();
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 </body>
+
+</html>

@@ -43,28 +43,57 @@
 	  <a class= "text-white" href="Sul.html" >Sul</a>
     <a class="text-success nav-item nav-link" href="entrar1.html">Login</a>
     <a class="text-white nav-item nav-link" href="sign.html">Cadastro</a>
-    <style>
-        h1 {text-align: center;}
-        p {text-align: center;}
-        div {text-align: center;}
-        img {
-       display: block;
-       margin-left: auto;
-       margin-right: auto;
-                          }
-        </style>
-
+    
     </div>
   </div>
 </nav>
-<body>
-  <br>
-  <br>
-    <h1>Pagamento Finalizado</h1>
-    <p>Aguarde novas informações no email </p>
-    <div>Obrigado pela compra</div>
-    <br>
-    <br>
-    <img src="Imagens/certo.png"  style="width:10%;">
-    <div> Volte a pagina incial </div>
+<table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Endereço</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">RG</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include 'Banco.php';
+                        $pdo = Banco::conectar();
+                        $sql = 'SELECT * FROM clientes ORDER BY id DESC';
+
+                        foreach($pdo->query($sql)as $row)
+                        {
+                            echo '<tr>';
+			                echo '<th scope="row">'. $row['id'] . '</th>';
+                            echo '<td>'. $row['nome'] . '</td>';
+                            echo '<td>'. $row['endereco'] . '</td>';
+                            echo '<td>'. $row['telefone'] . '</td>';
+                            echo '<td>'. $row['email'] . '</td>';
+                            echo '<td>'. $row['sexo'] . '</td>';
+                            echo '<td>'. $row['RG'] . '</td>';
+                            echo '<td>'. $row['CPF'] . '</td>';
+                            echo '<td>'. $row['cidade'] . '</td>';
+                            echo '<td width=350>';
+                           
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                        Banco::desconectar();
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
+
+</html>
