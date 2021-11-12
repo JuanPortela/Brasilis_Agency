@@ -1,8 +1,8 @@
 :root {
-  --jumbotron-padding-y: 3rem;
+  /* --jumbotron-padding-y: 3rem; */
 }
 
-.jumbotron {
+/* .jumbotron {
   padding-top: var(--jumbotron-padding-y);
   padding-bottom: var(--jumbotron-padding-y);
   margin-bottom: 0;
@@ -26,7 +26,7 @@
 
 .jumbotron .container {
   max-width: 40rem;
-}
+} */
 
 footer {
   padding-top: 3rem;
@@ -35,4 +35,8 @@ footer {
 
 footer p {
   margin-bottom: .25rem;
+}
+
+.cabecalho {
+  Background-image: url(imagens/Florianopolis1.jpg);
 }
